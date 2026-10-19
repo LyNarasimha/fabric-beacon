@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Fabric Beacon — Team Guide</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+:root { --navy:#0A1628; --navy-2:#12243C; --gold:#C9A227; --cream:#F4E4A6; --ink:#1e293b; --muted:#64748b; --line:#e2e8f0; --ok:#059669; --bad:#dc2626; --paper:#f8fafc; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:"Segoe UI",Calibri,system-ui,sans-serif; color:var(--ink); background:var(--paper); line-height:1.55; }
+header { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 70%); color:#fff; padding:48px 40px 40px; text-align:center; border-bottom:6px solid var(--gold); }
+header .eyebrow { color:var(--gold); letter-spacing:.28em; font-size:12px; font-weight:700; margin:0 0 12px; }
+header h1 { margin:0 0 10px; font-size:42px; font-weight:700; color:var(--cream); }
+header .lead { margin:0 auto 22px; max-width:760px; font-size:18px; color:#E8EEF5; }
+.pills { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.pill { background:#152A45; border:1px solid var(--gold); color:var(--cream); border-radius:999px; padding:8px 16px; font-size:13px; font-weight:600; }
+main { max-width:980px; margin:0 auto; padding:28px 20px 64px; }
+section { background:#fff; border:1px solid var(--line); border-radius:14px; padding:28px; margin-bottom:20px; }
+h2 { margin:0 0 16px; color:var(--navy); font-size:22px; border-left:5px solid var(--gold); padding-left:12px; }
+h3 { margin:20px 0 8px; color:var(--navy-2); font-size:16px; }
+p { margin:0 0 12px; }
+.compare { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.before,.after { border-radius:10px; padding:16px 18px; background:#f8fafc; }
+.before { border-left:5px solid var(--bad); }
+.after { border-left:5px solid var(--ok); }
+.before h3,.after h3 { margin-top:0; }
+.highlight { text-align:center; font-size:22px; color:var(--ok); font-weight:700; margin:18px 0 0; }
+table { width:100%; border-collapse:collapse; margin-top:8px; }
+th,td { border:1px solid #cbd5e1; padding:10px 12px; text-align:left; vertical-align:top; }
+th { background:var(--navy); color:#fff; }
+tr:nth-child(even) td { background:#f8fafc; }
+.steps { counter-reset:step; margin:0; padding:0; list-style:none; }
+.steps li { position:relative; padding:16px 16px 16px 64px; margin:0 0 10px; background:#f8fafc; border:1px solid var(--line); border-radius:10px; }
+.steps li::before { counter-increment:step; content:counter(step); position:absolute; left:16px; top:16px; width:32px; height:32px; border-radius:50%; background:var(--navy); color:var(--cream); font-weight:700; line-height:32px; text-align:center; }
+.done { background:#ecfdf5; border:1px solid #a7f3d0; border-radius:10px; padding:14px 16px; margin-top:12px; }
+.card-ex { font-family:Consolas,"Cascadia Mono",monospace; font-size:13px; background:var(--navy); color:#E8EEF5; border-radius:10px; padding:18px 20px; white-space:pre-wrap; border-top:4px solid var(--gold); }
+.prompt { background:#12243C; color:var(--cream); font-family:Consolas,monospace; padding:10px 14px; border-radius:8px; display:inline-block; }
+footer { text-align:center; color:var(--muted); font-size:13px; padding:8px 0 24px; }
+@media (max-width:720px) { .compare { grid-template-columns:1fr; } header h1 { font-size:32px; } }
+</style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">POWER BI &amp; FABRIC DISCOVERY</p>
+    <h1>Fabric Beacon</h1>
+    <p class="lead">One place to search workspaces, reports, semantic models, measures, and lineage — with governance scores and refresh health — so the team stops portal-hopping and tribal knowledge.</p>
+    <div class="pills"><span class="pill">Web app + API</span><span class="pill">Deep search &amp; lineage</span><span class="pill">Demo or live workspace</span></div>
+  </header>
+  <main>
+    <section>
+      <h2>Goal</h2>
+      <p>Build an internal discovery platform so the team can search, browse, and understand every Power BI / Fabric asset in scope — with lineage, governance scores, and refresh health in one place.</p>
+      <h3>Description</h3>
+      <p>Fabric Beacon is a centralized catalog for workspaces, datasets, reports, paginated reports, measures, columns, and DAX/M definitions. It replaces portal-hopping with deep search, reverse lookup, interactive lineage, and workspace-level governance so anyone can find what exists, what it depends on, and whether it is still trustworthy.</p>
+      <h3>Success looks like</h3>
+      <p>Every in-scope workspace is synced into a searchable catalog; any report, dataset, table, column, or measure can be found in seconds; lineage shows source → model → report clearly; governance surfaces stale datasets and orphaned measures; refresh status is visible; analysts self-serve without admin help.</p>
+      <h3>What we can achieve</h3>
+      <p>One source of truth instead of scattered bookmarks; faster impact analysis before model changes; proactive governance; fewer duplicate reports; a foundation for data trust and release readiness.</p>
+      <h3>What we can use it for</h3>
+      <p>Onboarding; “which reports use this table or measure?” before a change; workspace health before a release; stale content cleanup; migration decisions; leadership view of the BI estate.</p>
+    </section>
+    <section>
+      <h2>What you will see</h2>
+      <table>
+        <tr><th>On the screen</th><th>In simple words</th></tr>
+        <tr><td><strong>Discovery / catalog</strong></td><td>Workspaces, reports, datasets, paginated reports in one browse view.</td></tr>
+        <tr><td><strong>Search</strong></td><td>Find assets by name, table, column, measure, or DAX text.</td></tr>
+        <tr><td><strong>Lineage</strong></td><td>See how sources, models, and reports connect.</td></tr>
+        <tr><td><strong>Governance</strong></td><td>Health scores, stale models, orphaned measures.</td></tr>
+        <tr><td><strong>Jira</strong></td><td>Ticket-scoped analysis — what already exists before you build.</td></tr>
+        <tr><td><strong>Documentation</strong></td><td>Business-friendly report pages (Summary, When to Use).</td></tr>
+      </table>
+    </section>
+    <section>
+      <h2>Who this is for</h2>
+      <p>Insights analysts, BI developers, and leads who need catalog, impact analysis, and governance across Fabric / Power BI workspaces.</p>
+    </section>
+    <section>
+      <h2>Before vs after</h2>
+      <div class="compare">
+        <div class="before"><h3>Without Fabric Beacon</h3><p>Ten admin tabs, bookmarks, and memory. Impact analysis takes hours. Duplicates slip into releases.</p></div>
+        <div class="after"><h3>With Fabric Beacon</h3><p>One catalog, search, lineage, and Jira context. You know what exists before you change it.</p></div>
+      </div>
+      <p class="highlight">Find any asset in seconds, not meetings</p>
+    </section>
+    <section>
+      <h2>How it works</h2>
+      <div class="mermaid">
+flowchart TD
+  A["Open Fabric Beacon"] --> B{"Demo or live?"}
+  B -->|Demo| C["Sample catalog"]
+  B -->|Live| D["Setup: sign in once"]
+  D --> E["Sync workspace catalog"]
+  E --> F["Search · lineage · governance"]
+  F --> G["Optional Jira ticket scope"]
+      </div>
+    </section>
+    <section>
+      <h2>Setup — once</h2>
+      <ol class="steps">
+        <li>Clone the <strong>engineering repo</strong> (see README on GitHub).</li>
+        <li>Run <span class="prompt">.\start-dev.ps1</span> → open the app in the browser.</li>
+        <li>Use <strong>Demo</strong> with no credentials, or complete <strong>Setup</strong> for live Power BI / Fabric.</li>
+        <li>Optional: connect Jira for ticket analyzer flows.</li>
+      </ol>
+      <div class="done"><strong>You are done when</strong> you can open Discovery, search a report name, and open lineage for a dataset.</div>
+    </section>
+    <section>
+      <h2>Daily use</h2>
+      <p>Before a model or report change: search the table or measure → open lineage → note impacted reports. For tickets: open Jira analyzer with the ticket key. Before release: check governance and refresh health for the workspace.</p>
+    </section>
+    <section>
+      <h2>Example</h2>
+      <div class="card-ex">Search: "New Members"
+Results: 2 reports, 1 dataset, 12 measures
+Lineage: gold_layer.dim_branch → semantic model → New Members dashboard
+Governance: dataset refresh OK · health score 82/100
+Jira AN-XXXX: matched workspace QA · no duplicate report name</div>
+    </section>
+    <section>
+      <h2>If something fails</h2>
+      <table>
+        <tr><th>What you see</th><th>What to do</th></tr>
+        <tr><td>Empty catalog (live)</td><td>Finish Setup wizard; confirm workspace access in Power BI Service.</td></tr>
+        <tr><td>Search returns nothing</td><td>Run catalog sync; confirm the workspace is in scope.</td></tr>
+        <tr><td>Jira panel empty</td><td>Add Jira credentials in Setup; paste ticket key on Jira page.</td></tr>
+      </table>
+    </section>
+  </main>
+  <footer>Fabric Beacon · github.com/LyNarasimha/Fabric_Beacon · engineering app in README</footer>
+  <script>mermaid.initialize({ startOnLoad: true, theme: "base", themeVariables: { primaryColor: "#C9A227", primaryTextColor: "#0A1628", primaryBorderColor: "#0A1628", lineColor: "#0A1628", fontFamily: "Segoe UI" } });</script>
+</body>
+</html>
